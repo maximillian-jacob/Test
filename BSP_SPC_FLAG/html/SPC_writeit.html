@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPC Validation</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 40%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        .row-red {
+            background-color: red;
+        }
+        .cell-green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <p style="font-size: 25px; font-weight: bold">BSP/TBT SPC Validation Flag</p>
+
+    <table>
+        <tr>
+            <th style="width: 20%;">Entity</th>
+            <th style="width: 30%;">Txn Data</th>
+            <th style="width: 5%;">SPC Validation</th>
+        </tr>
+        <tr>
+            <td>BSP02</th>
+            <td>May 3rd</th>
+            <td data-validation="Y">Y</td>
+        </tr>
+        <tr>
+            <td>BSP05</td>
+            <td>Mar 30</td>
+            <td data-validation="Y">Y</td>
+        </tr>
+        <tr>
+            <td>BSP409</td>
+            <td>Mar 5</td>
+            <td data-validation="N">N</td>
+        </tr>
+        <tr>
+            <td>BSP411</td>
+            <td>Mar 4</td>
+            <td data-validation="N">N</td>
+        </tr>
+    </table>
+
+    <script>
+        // JavaScript to dynamically apply row and cell colors
+        document.addEventListener("DOMContentLoaded", function() {
+            const rows = document.querySelectorAll("table tr");
+            rows.forEach(row => {
+            const validationCell = row.querySelector("td[data-validation]");
+            if (validationCell) {
+                const validationValue = validationCell.getAttribute("data-validation");
+                if (validationValue === "N") {
+                row.classList.add("row-red");
+                } else if (validationValue === "Y") {
+                validationCell.classList.add("cell-green");
+                }
+            }
+            });
+        });
+    </script>
+</body>
+</html>

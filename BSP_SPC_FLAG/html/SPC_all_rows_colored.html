@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset=utf-8>
+    <title>SPC Validation</title>
+    <style type="text/css" media="screen">
+        table {
+            border-collapse: collapse;
+            width: 40%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(75, 255, 198);
+            text-align: center;
+        }
+        .row-green {
+            background-color: green;
+        }
+        .row-red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <p style="font-size: 25px; font-weight: bold;">BSP/TBT SPC Validation Flag</p>
+    
+    <table id="spc-table">
+        <tr>
+            <th style="width: 20%;">Entity</th>
+            <th style="width: 30%;">Txn Date</th>
+            <th style="width: 5%;">SPC Validation</th>
+        </tr>
+        <tr>
+            <td style="width: 20%;">BSP02</td>
+            <td style="width: 30%;">May 3rd</td>
+            <td style="width: 5%;" data-validation="Y">Y</td>
+        </tr>
+        <tr>
+            <td style="width: 20%;">BSP05</td>
+            <td style="width: 30%;">Mar 30</td>
+            <td style="width: 5%;" data-validation="Y">Y</td>
+        </tr>
+        <tr>
+            <td style="width: 20%;">BSP07</td>
+            <td style="width: 30%;">Mar 2</td>
+            <td style="width: 5%;" data-validation="Y">Y</td>
+        </tr>
+        <tr>
+            <td style="width: 20%;">BSP409</td>
+            <td style="width: 30%;">Mar 5</td>
+            <td style="width: 5%;" data-validation="N">N</td>
+        </tr>
+        <tr>
+            <td style="width: 20%;">BSP411</td>
+            <td style="width: 30%;">Mar 2</td>
+            <td style="width: 5%;" data-validation="N">N</td>
+        </tr>
+        <tr>
+            <td style="width: 20%;">TBT01</td>
+            <td style="width: 30%;">Mar 2</td>
+            <td style="width: 5%;" data-validation="Y">Y</td>
+        </tr>
+        <tr>
+            <td style="width: 20%;">TBT02</td>
+            <td style="width: 30%;">Mar 2</td>
+            <td style="width: 5%;" data-validation="Y">Y</td>
+        </tr>
+        <tr>
+            <td style="width: 20%;">TBT04</td>
+            <td style="width: 30%;">Mar 2</td>
+            <td style="width: 5%;" data-validation="N">N</td>
+        </tr>
+    </table>
+
+    <script>
+        // JavaScript to dynamically apply row colors
+        document.addEventListener("DOMContentLoaded", function () {
+            const rows = document.querySelectorAll("#spc-table tr");
+            rows.forEach(row => {
+                const validationCell = row.querySelector("td[data-validation]");
+                if (validationCell) {
+                    const validationValue = validationCell.getAttribute("data-validation");
+                    if (validationValue === "N") {
+                        row.classList.add("row-red");
+                    } else {
+                        row.classList.add("row-green");
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
